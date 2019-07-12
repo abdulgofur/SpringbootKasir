@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="gofur" id="transaksi-1.0">
+    <createTable tableName="transaksi">
+      <column name="id_transaksi" type="int(11)">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="id_item" type="int(11)"/>
+      <column name="qty_beli" type="int(11)"/>
+      <column name="tgl_trans" type="Date"/>
+      <column name="id_pelanggan" type="int(11)"/>
+    </createTable>
+
+  </changeSet>
+  
+     <changeSet author="gofur"
+		id="transaksi-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="id_item" baseTableName="transaksi"
+			constraintName="fk_item" referencedColumnNames="id_item"
+			referencedTableName="items" />
+	</changeSet> 
+	<changeSet author="gofur"
+		id="transaksi-1.0-2">
+		<addForeignKeyConstraint
+			baseColumnNames="id_pelanggan" baseTableName="transaksi"
+			constraintName="fk_pelanggan" referencedColumnNames="id_pelanggan"
+			referencedTableName="pelanggan" />
+	</changeSet> 
+</databaseChangeLog> 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="gofur" id="users-1.0">
+    <createTable tableName="users">
+      <column name="id_user" type="int(11)">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="id_role" type="int(11)"/>
+      <column name="nm_user" type="VARCHAR(45)"/>
+      <column name="nik" type="VARCHAR(10)"/>
+      <column name="password" type="VARCHAR(10)"/>
+    </createTable>
+
+  </changeSet>
+  
+     <changeSet author="gofur"
+		id="users-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="id_role" baseTableName="users"
+			constraintName="fk_role" referencedColumnNames="id_role"
+			referencedTableName="role" />
+	</changeSet> 
+	
+
+
+</databaseChangeLog> 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+  <changeSet author="gofur" id="report-1.0">
+    <createTable tableName="trns_report">
+      <column name="id_report" type="int(11)">
+        <constraints primaryKey="true" unique="false"/>
+      </column>
+      <column name="id_transaksi" type="int(11)"/>
+      <column name="id_user" type="int(11)"/>
+      <column name="date" type="Date"/>
+      <column name="total" type="VARCHAR(45)"/>
+    </createTable>
+
+  </changeSet>
+  
+     <changeSet author="gofur"
+		id="report-1.0-1">
+		<addForeignKeyConstraint
+			baseColumnNames="id_transaksi" baseTableName="trns_report"
+			constraintName="fk_trns" referencedColumnNames="id_transaksi"
+			referencedTableName="transaksi" />
+	</changeSet> 
+	<changeSet author="gofur"
+		id="report-1.0-2">
+		<addForeignKeyConstraint
+			baseColumnNames="id_user" baseTableName="trns_report"
+			constraintName="fk_user" referencedColumnNames="id_user"
+			referencedTableName="users" />
+	</changeSet>
+
+
+</databaseChangeLog> 
